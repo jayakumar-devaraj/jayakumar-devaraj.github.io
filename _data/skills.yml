@@ -1,0 +1,32 @@
+- group: Agentic AI
+  items:
+    - LangGraph
+    - MCP
+    - RAG pipelines
+    - LLM-as-a-judge evaluation
+    - Human-in-the-loop gates
+    - RAGAS
+
+- group: Event-driven and data
+  items:
+    - Kafka
+    - Postgres and pgvector
+    - Redis Streams
+    - Qdrant
+    - Hybrid retrieval
+
+- group: Languages and frameworks
+  items:
+    - Python and FastAPI
+    - Java and Spring Boot
+    - C#
+    - React
+    - Angular
+
+- group: Platform and delivery
+  items:
+    - AWS
+    - Docker
+    - GitHub Actions and Jenkins CI/CD
+    - Blue/green and canary releases
+    - Jaeger and LangFuse tracing

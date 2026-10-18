@@ -1,0 +1,23 @@
+- title: Agentic SDLC platform
+  url: /work/agentic-sdlc-platform.html
+  icon: platform
+  tags: Kafka · LangGraph · Postgres · human gates
+  summary: Decomposing a monolith into four repos with an event bus, a control plane, and cross-repo CI.
+
+- title: Event-driven agentic chatbot
+  url: /work/event-driven-chatbot.html
+  icon: chat
+  tags: Kafka · Redis Streams · Qdrant · PII scrubbing
+  summary: Async Kafka chat with PII scrubbing, human-approved refunds, and measured latency.
+
+- title: COBOL modernizer
+  url: /work/cobol-modernizer.html
+  icon: code
+  tags: LangGraph · GnuCOBOL · Java · differential testing
+  summary: COBOL to Java with agents, proved field-by-field against the original program.
+
+- title: RAG evaluation
+  url: /work/rag-evaluation.html
+  icon: search
+  tags: pgvector · hybrid retrieval · citation guard · RAGAS
+  summary: Retrieval systems judged by measurement, not demos.
