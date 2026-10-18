@@ -71,9 +71,9 @@ a { color: var(--accent-ink); }
     var(--ink);
 }
 .hero-inner { padding-top: var(--nav-h); padding-bottom: 48px; }
-.hero-eyebrow {
-  margin: 0 0 18px;
-  font: 600 .8rem var(--heading); letter-spacing: .18em; text-transform: uppercase;
+.hero-role {
+  margin: 18px 0 0;
+  font: 600 clamp(1rem, 2.4vw, 1.3rem)/1.4 var(--heading); letter-spacing: .04em;
   color: var(--accent);
 }
 .hero-name {

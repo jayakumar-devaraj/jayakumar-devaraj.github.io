@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Home
-eyebrow: Principal Full-Stack and Agentic AI Engineer
+role: Principal Full-Stack and Agentic AI Engineer
 location: Dallas–Fort Worth area
 ---
 
