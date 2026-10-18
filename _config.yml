@@ -1,0 +1,9 @@
+title: Jayakumar Devaraj
+description: Agentic AI systems, event-driven platforms, and the evidence behind them.
+theme: minima
+markdown: kramdown
+header_pages:
+  - work/index.md
+  - about.md
+exclude:
+  - README.md
