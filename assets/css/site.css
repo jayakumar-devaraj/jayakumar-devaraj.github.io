@@ -190,10 +190,6 @@ a { color: var(--accent-ink); }
   font: 700 1.5rem var(--heading);
 }
 .prose h2:first-child { margin-top: 0; }
-.prose > p:first-child > em:only-child {
-  display: block; padding: 14px 18px; border-left: 3px solid var(--accent);
-  background: var(--paper-2); border-radius: 0 8px 8px 0; color: var(--muted);
-}
 .prose code { font: .88em var(--mono); background: var(--paper-2); padding: .1em .35em; border-radius: 4px; }
 .prose table {
   display: block; overflow-x: auto; width: 100%;

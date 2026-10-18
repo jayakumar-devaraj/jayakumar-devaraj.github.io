@@ -4,8 +4,6 @@ title: Event-driven agentic chatbot
 permalink: /work/event-driven-chatbot.html
 ---
 
-*Results come from the repository's own reports (`docs/reports/`), measured on 2026-10-17 on one development machine.*
-
 ## Problem and constraint
 
 A customer-support chatbot backend that stays responsive under load and keeps personal data out of its internals. Refunds must never be issued automatically. It was built against a fixed one-day deadline on an 8 GiB Docker allocation, using a local model for routing and generation so there is no per-message cost.

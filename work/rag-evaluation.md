@@ -4,8 +4,6 @@ title: RAG evaluation
 permalink: /work/rag-evaluation.html
 ---
 
-*Two retrieval systems, each built against a short, fixed time box. Results come from each repository's own verification and evaluation reports, run against real Postgres and real model calls. The data is synthetic and small, and the numbers are labelled that way.*
-
 ## Problem and constraint
 
 Retrieval-augmented answers are only useful if they are grounded: the cited source must be the one the answer used, and the system must decline rather than guess. Both builds were time-boxed, the first to a 3-hour hackathon MVP, so evaluation had to be cheap, honest about sample size, and built into the run from the start.

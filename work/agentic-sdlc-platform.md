@@ -4,8 +4,6 @@ title: Agentic SDLC platform
 permalink: /work/agentic-sdlc-platform.html
 ---
 
-*Results come from the repository's functional verification report: runs against a real Kafka broker and real Postgres, from inside the container, dated 2026-08-01 unless noted. A row is evidence about the day it ran.*
-
 ## Problem and constraint
 
 Detect operational regressions in a running service, then orchestrate a governed, human-gated software change against that service's repository. The starting point was a monolith. The constraints shaped the design: one developer, an 8 GiB Docker allocation, no GPU, and a rule that every repository must clone and start with no sibling checkout present.

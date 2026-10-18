@@ -4,8 +4,6 @@ title: COBOL modernizer
 permalink: /work/cobol-modernizer.html
 ---
 
-*Results come from the repository's README and its QA verification report, which records each command and its real output. Current release: v0.4.10.*
-
 ## Problem and constraint
 
 Translate COBOL batch programs into Java, and prove the translation behaves like the original, not merely that it compiles. The source is the public CardDemo mainframe sample. The modernizer is a specialist the [platform's control plane](agentic-sdlc-platform.html) invokes as a subprocess. It has no API, no durable state and no gates of its own, so human review happens at the control plane's gates.
