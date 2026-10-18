@@ -6,7 +6,7 @@ permalink: /work/event-driven-chatbot.html
 
 ## Problem and constraint
 
-A customer-support chatbot backend that stays responsive under load and keeps personal data out of its internals. Refunds must never be issued automatically. It was built against a fixed one-day deadline on an 8 GiB Docker allocation, using a local model for routing and generation so there is no per-message cost.
+A customer-support chatbot backend that stays responsive under load and keeps personal data out of its internals. Refunds must never be issued automatically. It uses a local model for routing and generation, so there is no per-message cost.
 
 ## Topology
 
@@ -46,7 +46,7 @@ Accept immediately, process asynchronously, and stream the reply back word by wo
 |---|---|
 | Test suite | 67 unit, 19 integration tests against the real broker, database and vector store, and 5 front-end tests, passing locally and in CI; 88% coverage |
 | Horizontal scale | 2 gateways and 2 workers: turns posted alternately across gateway replicas, each stream read on the other replica, ordered with no duplicates; both workers owned partitions with zero lag |
-| Latency at 20 concurrent users (mock LLM, 200 requests) | `POST /chat` p50 3,545 ms, p95 4,822 ms; first token p50 4,443 ms, p95 6,807 ms. Reported with no SLO, because the lead sets SLOs. |
+| Latency at 20 concurrent users (mock LLM, 200 requests) | `POST /chat` p50 3,545 ms, p95 4,822 ms; first token p50 4,443 ms, p95 6,807 ms. |
 | PII scrub | 5.72 ms p95. Recall 100% on a 32-sentence sample that is too easy to support a real-world claim. |
 | Real model round trip | Completed with a local Ollama model; HTTPS through a Caddy reverse proxy |
 
@@ -62,7 +62,7 @@ Accept immediately, process asynchronously, and stream the reply back word by wo
 - **PII recall is unproven on hard text.** A realistic, adversarial labelled set comes before any accuracy target.
 - **An edge in the approval flow.** A new message on a thread while a refund awaits approval abandons the paused run. It fails safe, but the user must ask again.
 - **Scrubbed prompts leave the machine** to LangFuse Cloud, so the runtime is not fully offline.
-- **No deployment target yet.** There is no image registry or production hosting, and some development ports are still plain HTTP.
+- **No deployment target yet.** There is no image registry or production hosting.
 
 ## Source
 

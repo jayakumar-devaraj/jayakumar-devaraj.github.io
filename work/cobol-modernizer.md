@@ -38,7 +38,7 @@ Every model call goes through one client that owns backend choice, timeout, boun
 
 ## Results
 
-**Round trips: 2 of 4 programs, with file wiring written by hand.** The qualifier goes with the number every time. A test fails if the README states the count without it.
+**Round trips: 2 of 4 programs, with file wiring written by hand.**
 
 | Program | Output compared against the COBOL oracle | Matched |
 |---|---|---|
@@ -57,7 +57,6 @@ Every model call goes through one client that owns backend choice, timeout, boun
 
 - **A comparison that failed while the translation was right.** The generated job wrote 262 transactions and 100 balance rows against an oracle holding 257 and 94. Every difference traced to amounts whose last byte is an IBM sign overpunch. GnuCOBOL read that byte as the digit 0 and dropped the sign, so a negative amount looked like a large positive one and failed a credit-limit check. Four independent lines of evidence confirmed it. The fix converts the representation inside the oracle pipeline. The oracle moved to 262 and 100, and the generated pipeline did not change.
 - **A correct-looking design that was not.** `CBTRN02C` decides what to accept based on fields its own posting rewrites. A stateless implementation writes 287 records where the program writes 262. Each record is individually correct, so a field comparison cannot see the error. That was measured before the `reads_own_writes` step was built.
-- **A stale "not yet done" claim.** The gap list said no real design run had happened, but real four-program runs had (about $2.31 at API rates). The entry was corrected and narrowed to what was actually still open.
 
 ## Limits
 

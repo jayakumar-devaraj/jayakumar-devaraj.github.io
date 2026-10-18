@@ -6,7 +6,7 @@ permalink: /work/rag-evaluation.html
 
 ## Problem and constraint
 
-Retrieval-augmented answers are only useful if they are grounded: the cited source must be the one the answer used, and the system must decline rather than guess. Both builds were time-boxed, the first to a 3-hour hackathon MVP, so evaluation had to be cheap, honest about sample size, and built into the run from the start.
+Retrieval-augmented answers are only useful if they are grounded: the cited source must be the one the answer used, and the system must decline rather than guess. Both builds were time-boxed, so evaluation had to be cheap, honest about sample size, and built into the run from the start.
 
 ## Topology
 
@@ -73,7 +73,6 @@ The RAGAS scores are reported but treated only as a smoke test. 9 of 21 judge ca
 
 - **A vector index that sometimes found nothing.** An `ivfflat` index built on an empty table with 100 lists, searched with the default single probe, made dense retrieval non-deterministic at demo volumes. Identical content and query found both pages on one run and none on the next. It was replaced with HNSW, which has no empty-table sizing problem.
 - **Deduplication that broke on rename.** Including the filename in the identity key made a renamed, edited file look like an unrelated document. Identity is now (tenant, page or tab). The documented cost: two unrelated documents from one tenant that share a page label now collide.
-- **An evaluation tool that would not install.** RAGAS could not live in the runtime environment, so it runs in a separate one. It took four attempts, and the failures are recorded rather than hidden.
 
 ## Limits
 
