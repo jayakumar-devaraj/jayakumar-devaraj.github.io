@@ -1,6 +1,5 @@
 ---
 layout: home
-title: Home
 role: Principal Full-Stack and Agentic AI Engineer
 location: Dallas–Fort Worth area
 ---

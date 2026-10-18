@@ -1,9 +1,17 @@
 title: Jayakumar Devaraj
+tagline: Principal Full-Stack and Agentic AI Engineer
 description: Agentic AI systems, event-driven platforms, and the evidence behind them.
+url: https://jayakumar-devaraj.github.io
 theme: minima
 markdown: kramdown
 plugins:
   - jekyll-seo-tag
   - jekyll-feed
+  - jekyll-sitemap
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/headshot.jpg
 exclude:
   - README.md
