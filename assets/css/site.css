@@ -42,9 +42,10 @@ a { color: var(--accent-ink); }
 .nav.scrolled { box-shadow: 0 1px 0 var(--ink-line); }
 .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
 .nav-brand {
-  font: 700 1.05rem var(--heading); letter-spacing: .02em;
+  font: 700 .85rem var(--heading); letter-spacing: .12em; text-transform: uppercase;
   color: #fff; text-decoration: none;
 }
+.nav-brand:hover { color: var(--accent); }
 .nav-links { display: flex; gap: 28px; }
 .nav-links a {
   font: 600 .8rem var(--heading); letter-spacing: .12em; text-transform: uppercase;
