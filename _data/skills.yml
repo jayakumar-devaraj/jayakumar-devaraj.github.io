@@ -1,32 +1,48 @@
 - group: Agentic AI
   items:
     - LangGraph
+    - LangChain
     - MCP
     - RAG pipelines
-    - LLM-as-a-judge evaluation
+    - Prompt engineering
     - Human-in-the-loop gates
-    - RAGAS
 
-- group: Event-driven and data
+- group: Evaluation and tracing
   items:
-    - Kafka
-    - Postgres and pgvector
-    - Redis Streams
-    - Qdrant
-    - Hybrid retrieval
+    - LLM-as-a-judge evaluation
+    - DeepEval
+    - RAGAS
+    - LangFuse
+    - Jaeger tracing
+
+- group: Architecture and APIs
+  items:
+    - Microservices
+    - Event-driven architecture with Kafka
+    - REST API design
+    - Monolith modernization
+    - Adobe AEM and RWS Tridion (headless CMS, CaaS APIs)
 
 - group: Languages and frameworks
   items:
     - Python and FastAPI
     - Java and Spring Boot
-    - C#
-    - React
+    - C# and .NET
     - Angular
+    - React
 
-- group: Platform and delivery
+- group: Data and search
   items:
-    - AWS
-    - Docker
-    - GitHub Actions and Jenkins CI/CD
+    - Postgres and pgvector
+    - Pinecone
+    - Elasticsearch
+    - Qdrant
+    - Redis Streams
+    - Oracle PL/SQL
+
+- group: Cloud and delivery
+  items:
+    - AWS (Bedrock, Lambda, EC2, S3, DynamoDB)
+    - Docker and Kubernetes
+    - Jenkins and GitHub Actions CI/CD
     - Blue/green and canary releases
-    - Jaeger and LangFuse tracing

@@ -135,7 +135,7 @@ a { color: var(--accent-ink); }
 .card-more { font: 600 .8rem var(--heading); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
 
 /* Skills */
-.skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; }
+.skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 32px; margin-top: 48px; }
 .skill-group h3 {
   margin: 0 0 12px; padding-bottom: 10px; border-bottom: 2px solid var(--accent);
   font: 700 1rem var(--heading); text-transform: uppercase; letter-spacing: .06em;
