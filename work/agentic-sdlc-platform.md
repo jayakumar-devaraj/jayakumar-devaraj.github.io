@@ -71,7 +71,7 @@ Four repositories coupled only through Kafka topics and one contract package. No
 - **A run that vanished.** An exception inside a node left the run neither resumable nor terminal. Every run now ends in exactly one reported state.
 - **An oversized tracking service.** MLflow was 73% of platform memory because of a job subsystem the deployment never needed. Disabling it cut the platform to a third of its footprint.
 
-## Limits, and what changes at 100x
+## Limits
 
 - **Serial by design.** One worker runs every slice, so a long run delays decisions for others. The next step is a measured load model with a stated decision-to-resume SLO before adding workers.
 - **No statistical evaluation of generated changes yet.** Live generation is evidenced by one run. A held-out task suite with confidence intervals is the planned next artifact.

@@ -3,7 +3,7 @@ layout: default
 ---
 <section class="page-header">
   <div class="container">
-    {%- if page.url contains "/work/" and page.url != "/work/" %}
+    {%- if page.url contains "/work/" %}
     <a class="page-kicker" href="{{ "/#work" | relative_url }}">← Case studies</a>
     {%- endif %}
     <h1>{{ page.title | escape }}</h1>

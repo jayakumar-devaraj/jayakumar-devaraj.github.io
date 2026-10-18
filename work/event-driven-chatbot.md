@@ -68,7 +68,7 @@ Accept immediately, process asynchronously, and stream the reply back word by wo
 - **An injection detector that refuses a legitimate customer.** At the calibrated threshold, "How do I get my money back for this charge?" scores above the line. It was reported, not tuned away; structural prompt separation remains the primary defence.
 - **A small model echoing the prompt delimiters.** `llama3.2:1b` repeated the user block at the start of its reply. The echo is now filtered on output but not yet re-tested against the model.
 
-## Limits, and what changes at 100x
+## Limits
 
 - **Latency has a measured cause but no fix.** At 100x, worker CPU per message is the first constraint. The plan: profile output scrubbing and embedding threads, then scale workers toward the partition count.
 - **PII recall is unproven on hard text.** A realistic, adversarial labelled set comes before any accuracy target.
