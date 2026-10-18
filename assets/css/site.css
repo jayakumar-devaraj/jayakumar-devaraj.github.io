@@ -87,6 +87,11 @@ a { color: var(--accent-ink); }
   color: var(--on-dark);
 }
 .hero-actions { margin-top: 40px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero-proof {
+  max-width: 46ch; margin: 44px auto 0;
+  font: 500 .95rem/1.7 var(--body); color: var(--on-dark-muted);
+}
+.hero-proof strong { color: #fff; font-weight: 600; }
 .btn {
   display: inline-block; padding: 15px 30px; border-radius: 6px;
   font: 700 .9rem var(--heading); letter-spacing: .1em; text-transform: uppercase;
