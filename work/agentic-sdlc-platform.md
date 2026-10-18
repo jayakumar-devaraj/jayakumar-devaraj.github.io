@@ -4,11 +4,11 @@ title: Agentic SDLC platform
 permalink: /work/agentic-sdlc-platform.html
 ---
 
-*Figures below are from the platform's system-design document, last verified 2026-07-28. Re-run before publishing.* <!-- TODO(verify): re-run suites and docker stats -->
+*Results come from the repository's functional verification report: runs against a real Kafka broker and real Postgres, from inside the container, dated 2026-08-01 unless noted. A row is evidence about the day it ran.*
 
 ## Problem and constraint
 
-Detect operational regressions in a running service, then orchestrate a governed, human-gated software change against that service's repository. The starting point was a monolith. The constraint set the design: one developer, an 8 GiB Docker allocation, no GPU, and a requirement that every repository be cloneable and startable alone.
+Detect operational regressions in a running service, then orchestrate a governed, human-gated software change against that service's repository. The starting point was a monolith. The constraints shaped the design: one developer, an 8 GiB Docker allocation, no GPU, and a rule that every repository must clone and start with no sibling checkout present.
 
 ## Topology
 
@@ -27,48 +27,53 @@ flowchart TB
     EB --> CP
     CP -->|run outcome| EB
     HUMAN -->|gate decision| EB
-    CP -.->|"read-only clone per run"| TENANT
+    CP -.->|"clone per run"| TENANT
 ```
 
-Four repositories, coupled only through Kafka topics and one contract package. No shared database, filesystem, or compose network.
+Four repositories coupled only through Kafka topics and one contract package. No shared database, filesystem or compose network.
 
 ## Decisions
 
 | Decision | Rejected alternative | Why |
 |---|---|---|
-| Kafka is the only coupling | Shared database between services | Each repo must start with no sibling present; a shared store hides coupling. |
-| Poll loops never execute work; they validate and enqueue | Run the graph inside the consumer | A gate can park a run for hours; a blocked poll loop exceeds `max.poll.interval.ms` and rebalances every other run on the partition. |
-| Single-threaded worker owns the checkpointer | Thread pool with a shared connection | Removes thread-safety as a question testing would have to answer. Serial runs are correct at this volume. |
-| Work written to a `work_inbox` table before the in-memory queue | Commit offset and trust the queue | Failing to record is treated as refusal, so nothing is queued that could not be written down. |
-| Full queue is backpressure (pause and rewind the partition) | Drop and commit past it | The original drop lost triggers silently with no outcome event. |
-| Human gates are durable `interrupt()` suspensions in Postgres | Synchronous approval prompt | A run survives the process that started it and can be resumed by a different one. |
-| Platform stays domain-agnostic, enforced by CI | Review-based convention | A convention decays; a build step does not. |
-| Two audit sinks that fail differently (hash-chained JSONL + Kafka topic) | One append-only file | A chain proves order, not completeness. The independent copy is what exposes truncation. |
+| Kafka is the only coupling | Shared database between services | Each repository must start alone. A shared store hides coupling. |
+| Poll loops only validate and enqueue | Run the graph inside the consumer | A gate can park a run for hours. A blocked poll loop exceeds `max.poll.interval.ms` and rebalances every other run on the partition. |
+| Commit offsets on enqueue, backed by a durable `work_inbox` | Commit on completion | Committing on completion puts a clone and a full graph run back inside the poll loop. The inbox closes the loss window that early commit opens. |
+| Single-threaded worker owns the checkpointer | Thread pool sharing a connection | Thread-safety stops being a question testing has to answer. Serial runs are acceptable at drift-event volume. |
+| A full queue is backpressure (rewind and pause the partition) | Drop and commit past it | The original drop lost triggers with no outcome event. |
+| Human gates are durable `interrupt()` suspensions in Postgres | Synchronous approval prompt | A run survives the process that started it. |
+| Two audit sinks that fail differently: a hash-chained file and a Kafka topic | One append-only file | A chain proves order, not completeness. |
+| Deliver only to `agentic-patch/{run_id}`, off by default | Push to the tenant's branch | Delivery needs a write-scoped token, so it is opt-in and can never touch the integration branch. |
 
-## Measured results
+## Results
 
-| Measure | Result |
+| Check | Result |
 |---|---|
-| Control-plane tests | 226 passing, 91% coverage, 0 skipped in CI, gate durability against a real PostgreSQL service container |
-| Contract package | 8 tests, 100% coverage, enforced in CI |
-| Platform memory, all containers running | 1.03 GiB measured against 6.25 GiB of limits (16.4%) |
-| Crash recovery of queued work | Container killed mid-drain: 12 of 14 queued items survived and were restored |
+| Durable gate across processes | A parked run was resumed by a *different* process after the original was killed |
+| End-to-end replay run | Both gates answered, real pytest passed in 1,336 ms, `completed` |
+| Live generation via the `claude` CLI | Generated 2 files in 111,875 ms; a real pytest passed in 1,609 ms; `completed`. One run: evidence that the path works, not a quality claim. |
+| Delivery | Pushed `agentic-patch/…` with the outcome event carrying the new commit; `main` untouched |
+| Audit completeness | Two consecutive runs recorded 17 records each, one continuous 34-record chain, verified across a container restart |
+| Footprint | Consumer at 69.6 MiB against a 1 GiB limit, flat across a full run |
+| Crash recovery of queued work | Container killed mid-drain: 12 of 14 queued items restored at the next startup (design document, §8) |
+
+**Five defects were found by these real-infrastructure runs while the full unit suite passed.** Each is written up as an architecture decision record, and the platform has 29 of them.
 
 ## Failures found, and what they changed
 
-- **A cross-container listener that looked right and was not.** Reusing the host listener bootstrapped fine, then every send failed, because it advertises `localhost`. A third listener was added, and integration is now verified container-to-container in both directions.
+- **An audit chain that verified while a run was missing.** The second run in a process recorded zero audit records, yet `verify_chain` reported the trail intact: the chain was whole, only short. The cursor now belongs to the run, and completeness is checked by counting records per run against runs served.
+- **A listener that looked right and was not.** Reusing the host listener bootstrapped fine, then every send failed, because it advertises `localhost`. A third listener was added, and integration is now verified container-to-container in both directions.
 - **A run that vanished.** An exception inside a node left the run neither resumable nor terminal. Every run now ends in exactly one reported state.
-- **An audit chain that verified while records were missing.** A process-scoped cursor dropped every run after the first, yet `verify_chain` returned ok because the chain it checked was intact, only short. The cursor now belongs to the run, and completeness is checked by counting records per correlation id against runs served.
-- **A 2 GiB service nobody used.** MLflow was 73% of platform memory because of an async job subsystem the deployment never needed. Disabling it cut the platform to a third of its footprint.
-- **CI reported as delivered that had never passed.** Now only an observed-green run counts.
+- **A delivered branch carrying build artefacts.** The first delivery included 4 `.pyc` files. Staging now excludes caches, and the delivered branch carries only the change.
+- **A 2 GiB service nobody used.** MLflow was 73% of platform memory because of a job subsystem the deployment never needed. Disabling it cut the platform to a third of its footprint.
 
 ## Limits, and what changes at 100x
 
-- The broker is a single node with replication factor 1, so the independent audit copy has no redundancy. Tampering is detectable only while the broker's copy exists. Production raises the replication factor first.
-- The audit chain assumes one writer. A second control-plane instance would make a real alert indistinguishable from noise. Two fixes are documented (per-instance segments, or the topic as ordering authority); neither is built, and the choice depends on whether a global order is worth a broker dependency.
-- Postgres is a system of record for in-flight runs with no backup prescribed.
-- Code generation is unavailable in the shipped image by design; a run safe-stops with a stated reason.
-- Runs execute serially. Throughput scales by adding consumers only after the audit decision above.
+- **Serial by design.** One worker runs every slice, so a long run delays decisions for others. The next step is a measured load model with a stated decision-to-resume SLO before adding workers.
+- **One broker, replication factor 1.** The independent audit copy has no redundancy, so tampering is detectable only while the broker's copy exists. Production raises the replication factor first.
+- **One audit writer.** A second instance would interleave chain heads and make a real alert indistinguishable from noise. Per-instance segments or the topic as ordering authority are documented; neither is built.
+- **No statistical evaluation of generated changes yet.** Live generation is evidenced by one run. A held-out task suite with confidence intervals is the planned next artifact.
+- **Ongoing hardening.** An independent audit in October 2026 identified gate-decision authentication and execution isolation as the next hardening priorities; that work is in progress.
 
 ## Links
 
