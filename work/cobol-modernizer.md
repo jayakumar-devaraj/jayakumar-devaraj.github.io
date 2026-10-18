@@ -66,4 +66,4 @@ Every model call goes through one client that owns backend choice, timeout, boun
 
 ## Source
 
-Source available on request (release v0.4.10).
+Source available on request.
