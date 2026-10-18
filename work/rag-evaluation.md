@@ -2,6 +2,15 @@
 layout: page
 title: RAG evaluation
 permalink: /work/rag-evaluation.html
+glance:
+  - label: What
+    text: Two retrieval systems that cite their exact source and decline rather than guess.
+  - label: My role
+    text: Designed and built both.
+  - label: Stack
+    text: Python · Postgres and pgvector · hybrid retrieval · LangGraph · RAGAS
+  - label: Result
+    text: On a 9-question synthetic golden set, the clause assistant answered or declined correctly 9 of 9 times, with every citation correct.
 ---
 
 ## Problem and constraint

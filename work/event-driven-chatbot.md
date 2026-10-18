@@ -2,6 +2,15 @@
 layout: page
 title: Event-driven agentic chatbot
 permalink: /work/event-driven-chatbot.html
+glance:
+  - label: What
+    text: An asynchronous customer-support chatbot that keeps personal data out of its internals and never refunds without a human.
+  - label: My role
+    text: Designed and built end to end.
+  - label: Stack
+    text: Python · Kafka · LangGraph · Redis Streams · Qdrant · React
+  - label: Result
+    text: Two gateways and two workers served ordered, duplicate-free streams; 67 unit, 19 integration and 5 front-end tests at 88% coverage.
 ---
 
 ## Problem and constraint

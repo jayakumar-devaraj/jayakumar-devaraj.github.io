@@ -2,6 +2,15 @@
 layout: page
 title: COBOL modernizer
 permalink: /work/cobol-modernizer.html
+glance:
+  - label: What
+    text: Agents translate COBOL batch programs into Java, proved field by field against the original program's own output.
+  - label: My role
+    text: Designed and built end to end.
+  - label: Stack
+    text: Python · LangGraph · Claude models · GnuCOBOL · Java · Maven
+  - label: Result
+    text: Generated logic matched COBOL output on 2 of 4 programs (file wiring written by hand), including 3,144 of 3,144 transaction fields.
 ---
 
 ## Problem and constraint

@@ -2,6 +2,15 @@
 layout: page
 title: Agentic SDLC platform
 permalink: /work/agentic-sdlc-platform.html
+glance:
+  - label: What
+    text: Detects operational drift in a running service, then runs a governed, human-gated code change against its repository.
+  - label: My role
+    text: Designed and built end to end.
+  - label: Stack
+    text: Python · Kafka · LangGraph · Postgres · MLflow · Docker
+  - label: Result
+    text: A parked run resumed in a different process after the original was killed; real-infrastructure runs found five defects the unit suite missed.
 ---
 
 ## Problem and constraint

@@ -12,6 +12,17 @@ layout: default
 
 <main class="page-body">
   <article class="container prose">
+    {%- if page.glance %}
+    <aside class="glance" aria-label="At a glance">
+      <p class="glance-title">At a glance</p>
+      <dl>
+        {%- for g in page.glance %}
+        <dt>{{ g.label }}</dt>
+        <dd>{{ g.text }}</dd>
+        {%- endfor %}
+      </dl>
+    </aside>
+    {%- endif %}
     {{ content }}
   </article>
 </main>
