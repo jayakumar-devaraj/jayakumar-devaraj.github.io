@@ -121,6 +121,14 @@ a { color: var(--accent-ink); }
 }
 .section-lead p { margin: 0; }
 
+/* Clients band */
+.clients { padding: 28px 0; background: var(--paper); border-bottom: 1px solid var(--line); text-align: center; }
+.clients p { margin: 0; font: 600 1.05rem/1.8 var(--heading); color: var(--text); letter-spacing: .02em; }
+.clients-label {
+  display: inline-block; margin-right: 10px;
+  font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink);
+}
+
 /* Case-study cards */
 .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .card {
@@ -238,6 +246,7 @@ a { color: var(--accent-ink); }
   .nav.open .nav-links { display: flex; }
   .nav-links a { padding: 12px 0; }
   .cards { grid-template-columns: 1fr; }
+  .clients-label { display: block; margin: 0 0 4px; }
   .prose .mermaid svg { min-width: 560px; }
   .prose table.experience { overflow: visible; }
   .experience thead { display: none; }
