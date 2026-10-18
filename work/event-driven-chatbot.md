@@ -19,9 +19,12 @@ flowchart LR
     G -->|"chat-requests<br/>keyed by thread_id"| K[("Kafka")]
     K --> W["Worker<br/>dedupe lease + LangGraph"]
     W --> R{"route<br/>fastembed + Qdrant"}
-    R --> B["billing"] & T["tech support"] & GEN["general"] & REF["refusal"]
-    B --> AP{{"refund approval gate"}}
-    W -->|"tokens:{thread}:{message}"| S[("Redis Streams")]
+    R --> B["billing"]
+    R --> T["tech support"]
+    R --> GEN["general"]
+    R --> REF["refusal"]
+    B --> AP[/"refund approval gate"/]
+    W -->|"one stream per message"| S[("Redis Streams")]
     W -.->|checkpoints| RC[("Redis checkpointer")]
     S -->|"SSE, resumable by Last-Event-ID"| C
 ```
