@@ -239,6 +239,18 @@ a { color: var(--accent-ink); }
   .nav-links a { padding: 12px 0; }
   .cards { grid-template-columns: 1fr; }
   .prose .mermaid svg { min-width: 560px; }
+  .prose table.experience { overflow: visible; }
+  .experience thead { display: none; }
+  .experience tbody, .experience tr, .experience td { display: block; }
+  .experience tr {
+    margin-bottom: 14px; padding: 16px 18px;
+    border: 1px solid var(--line); border-radius: 12px;
+  }
+  .prose .experience td { padding: 0; border: 0; min-width: 0; }
+  .prose .experience td:nth-child(1) { font-size: .85rem; color: var(--muted); }
+  .prose .experience td:nth-child(2) { margin-top: 4px; font: 700 1.05rem var(--heading); }
+  .prose .experience td:nth-child(3) { color: var(--accent-ink); font-weight: 600; }
+  .prose .experience td:nth-child(4) { margin-top: 10px; }
   .section { padding: 72px 0; }
 }
 @media (max-width: 480px) {
