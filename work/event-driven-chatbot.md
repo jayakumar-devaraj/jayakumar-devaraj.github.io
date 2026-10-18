@@ -21,6 +21,9 @@ flowchart TB
     R --> T["tech support"]
     R --> GEN["general"]
     R --> REF["refusal"]
+    T --> RAG["RAG<br/>retrieve top-k chunks,<br/>answer with citations"]
+    GEN --> RAG
+    KB[("Qdrant<br/>support knowledge base")] --> RAG
     B --> AP[/"refund approval gate"/]
     W -->|"one stream per message"| S[("Redis Streams")]
     W -.->|checkpoints| RC[("Redis checkpointer")]
