@@ -1,0 +1,69 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="container hero-inner">
+    <p class="hero-eyebrow">{{ page.eyebrow }}</p>
+    <h1 class="hero-name">{{ site.title }}</h1>
+    <p class="hero-tagline">{{ site.description }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#work">See the work</a>
+      <a class="btn btn-ghost" href="#contact">Contact me</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light" id="work">
+  <div class="container">
+    <h2 class="section-title">Case studies</h2>
+    <div class="section-lead">{{ content }}</div>
+    <div class="cards">
+      {%- for p in site.data.projects %}
+      <a class="card" href="{{ p.url | relative_url }}">
+        <span class="card-icon">{% include icon.html name=p.icon %}</span>
+        <h3>{{ p.title }}</h3>
+        <p class="card-tags">{{ p.tags }}</p>
+        <p class="card-summary">{{ p.summary }}</p>
+        <span class="card-more">Read the case study →</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills">
+      {%- for s in site.data.skills %}
+      <div class="skill-group">
+        <h3>{{ s.group }}</h3>
+        <ul>
+          {%- for item in s.items %}
+          <li>{{ item }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark" id="contact">
+  <div class="container contact">
+    <h2 class="section-title">Contact</h2>
+    {%- assign headshot = site.static_files | where: "path", "/assets/img/headshot.jpg" | first %}
+    {%- if headshot %}
+    <img class="avatar" src="{{ headshot.path | relative_url }}" alt="Photo of {{ site.title }}" width="176" height="176">
+    {%- else %}
+    <div class="avatar avatar-initials" aria-hidden="true">JD</div>
+    {%- endif %}
+    <p class="contact-name">{{ site.title }}</p>
+    <p class="contact-meta">{{ page.location }}</p>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/jayakumar-devaraj/" aria-label="LinkedIn">{% include icon.html name="linkedin" %}</a>
+      <a href="https://github.com/jayakumar-devaraj" aria-label="GitHub">{% include icon.html name="github" %}</a>
+    </div>
+    <p class="contact-note">Source for every case study is available on request.</p>
+  </div>
+</section>

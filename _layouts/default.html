@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {%- include head.html -%}
+  <body class="{% if page.layout == 'home' %}is-home{% endif %}">
+    <header class="nav" id="nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="{{ "/" | relative_url }}">{{ site.title }}</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+        <nav class="nav-links" id="nav-links">
+          <a href="{{ "/#work" | relative_url }}">Work</a>
+          <a href="{{ "/#skills" | relative_url }}">Skills</a>
+          <a href="{{ "/about/" | relative_url }}">About</a>
+          <a href="{{ "/#contact" | relative_url }}">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    {{ content }}
+
+    <footer class="footer">
+      <div class="container">© {{ site.time | date: "%Y" }} {{ site.title }}</div>
+    </footer>
+
+    <script>
+      (function () {
+        var nav = document.getElementById("nav");
+        var toggle = nav.querySelector(".nav-toggle");
+        toggle.addEventListener("click", function () {
+          var open = nav.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", open);
+        });
+        nav.querySelectorAll(".nav-links a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            nav.classList.remove("open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+        function onScroll() { nav.classList.toggle("scrolled", window.scrollY > 40); }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      })();
+    </script>
+  </body>
+</html>
