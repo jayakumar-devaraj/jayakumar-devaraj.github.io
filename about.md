@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+permalink: /about/
 ---
 
 Principal Full-Stack and Agentic AI Engineer with 17+ years designing and delivering distributed systems in Python, Java, .NET, Angular and React for Fortune 500 financial services, banking, securities and insurance platforms.
