@@ -11,7 +11,7 @@ A customer-support chatbot backend that stays responsive under load and keeps pe
 ## Topology
 
 ```mermaid
-flowchart LR
+flowchart TB
     C["React chat window"] -->|"POST /chat"| G["Gateway<br/>auth, ownership, rate limit,<br/>PII scrub"]
     G -->|"202 Accepted"| C
     G -->|"chat-requests<br/>keyed by thread_id"| K[("Kafka")]

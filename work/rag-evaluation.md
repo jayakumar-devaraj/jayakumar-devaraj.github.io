@@ -11,7 +11,7 @@ Retrieval-augmented answers are only useful if they are grounded: the cited sour
 ## Topology
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph ingest["Ingestion (plain Python)"]
         D["PDF / Excel / Word / text"] --> P["parse to pages, tabs or clauses"]
         P --> H{"SHA-256 identity<br/>changed?"}

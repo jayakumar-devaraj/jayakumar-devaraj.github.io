@@ -11,7 +11,7 @@ Translate COBOL batch programs into Java, and prove the translation behaves like
 ## Topology
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph design["design (LangGraph, one branch per program)"]
         SE["spec_extractor"] --> SC["spec_critic"]
     end

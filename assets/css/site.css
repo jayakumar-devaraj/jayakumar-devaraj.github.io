@@ -221,6 +221,7 @@ a { color: var(--accent-ink); }
   .nav.open .nav-links { display: flex; }
   .nav-links a { padding: 12px 0; }
   .cards { grid-template-columns: 1fr; }
+  .prose .mermaid svg { min-width: 560px; }
   .section { padding: 72px 0; }
 }
 @media (max-width: 480px) {
