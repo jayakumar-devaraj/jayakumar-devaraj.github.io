@@ -33,6 +33,7 @@
 
 - group: Data and search
   items:
+    - SQL
     - Postgres and pgvector
     - Pinecone
     - Elasticsearch
