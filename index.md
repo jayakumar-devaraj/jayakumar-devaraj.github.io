@@ -18,6 +18,5 @@ I design and build agentic AI systems: event-driven orchestration, evaluation, a
 
 - [LinkedIn](https://www.linkedin.com/in/jayakumar-devaraj/)
 - [GitHub](https://github.com/jayakumar-devaraj)
-<!-- TODO(user): add a public email if wanted -->
 
 

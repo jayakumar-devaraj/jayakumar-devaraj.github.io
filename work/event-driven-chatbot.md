@@ -63,7 +63,6 @@ Accept immediately, process asynchronously, and stream the reply back word by wo
 - **Scrubbed prompts leave the machine** to LangFuse Cloud, so the runtime is not fully offline.
 - **No deployment target yet.** There is no image registry or production hosting, and some development ports are still plain HTTP.
 
-## Links
+## Source
 
-- [enterprise-agentic-event-driven-chatbot](https://github.com/jayakumar-devaraj/enterprise-agentic-event-driven-chatbot)
-<!-- TODO(verify): repo visibility, CI run URL -->
+Source available on request.

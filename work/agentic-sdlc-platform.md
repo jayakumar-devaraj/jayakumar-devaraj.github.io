@@ -75,7 +75,6 @@ Four repositories coupled only through Kafka topics and one contract package. No
 - **No statistical evaluation of generated changes yet.** Live generation is evidenced by one run. A held-out task suite with confidence intervals is the planned next artifact.
 - **Ongoing hardening.** An independent audit in October 2026 identified gate-decision authentication and execution isolation as the next hardening priorities; that work is in progress.
 
-## Links
+## Source
 
-- [control-plane](https://github.com/jayakumar-devaraj/agentic-sdlc-control-plane) · [eventbus](https://github.com/jayakumar-devaraj/agentic-sdlc-eventbus) · [mlops](https://github.com/jayakumar-devaraj/agentic-sdlc-mlops)
-<!-- TODO(verify): repo visibility, release tags, CI run URLs -->
+Source available on request.

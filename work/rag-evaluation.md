@@ -83,8 +83,6 @@ The RAGAS scores are reported but treated only as a smoke test. 9 of 21 judge ca
 - **The LLM judge is unreliable under rate limits.** Timeouts left most faithfulness rows unscored. A larger, paired evaluation with confidence intervals is the next step.
 - **Scope cuts from the time box are recorded.** For example, Word ingestion reads paragraphs only.
 
-## Links
+## Source
 
-- [agentic-poly-rag](https://github.com/jayakumar-devaraj/agentic-poly-rag)
-- The contract clause assistant is not yet published.
-<!-- TODO(verify): repo visibility; publish contract-clause-rag or keep it local -->
+Source available on request.

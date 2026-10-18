@@ -67,7 +67,6 @@ Every model call goes through one client that owns backend choice, timeout, boun
 - **Output quality is spot-measured, not continuously evaluated.** An LLM-as-judge harness exists, with a committed corpus and a rubric shown to discriminate, but `solution_architect` has never been scored because no golden unified design exists to score against.
 - **Nothing has been written to the real target repository yet.**
 
-## Links
+## Source
 
-- [agentic-sdlc-cobol-modernizer](https://github.com/jayakumar-devaraj/agentic-sdlc-cobol-modernizer) · release v0.4.10
-<!-- TODO(verify): repo visibility, release URL -->
+Source available on request (release v0.4.10).
