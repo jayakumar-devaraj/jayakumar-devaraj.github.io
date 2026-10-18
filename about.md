@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-Principal Full-Stack and Agentic AI Engineer with 17+ years designing and delivering distributed systems in Java, .NET and Python for Fortune 500 financial services, banking, securities and insurance platforms.
+Principal Full-Stack and Agentic AI Engineer with 17+ years designing and delivering distributed systems in Python, Java, .NET, Angular and React for Fortune 500 financial services, banking, securities and insurance platforms.
 
 For the past four years I have built agentic AI systems: LangGraph orchestration, RAG pipelines on vector databases, MCP tool integrations with Jira, Confluence, Outlook and Microsoft Teams, and human-in-the-loop approval gates. I review AI-generated code for correctness, security and performance, set engineering standards, and mentor developers. Based in the Dallas–Fort Worth area.
 
