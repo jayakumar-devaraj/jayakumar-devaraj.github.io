@@ -197,6 +197,8 @@ a { color: var(--accent-ink); }
 }
 .prose th, .prose td { padding: 10px 14px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
 .prose th { background: var(--paper-2); font-weight: 600; }
+.prose .experience td:first-child { white-space: nowrap; }
+.prose .experience td:nth-child(2), .prose .experience td:nth-child(3) { min-width: 9em; }
 .prose li { margin: .35em 0; }
 .prose .mermaid {
   margin: 1.5em 0; padding: 20px; overflow-x: auto;
