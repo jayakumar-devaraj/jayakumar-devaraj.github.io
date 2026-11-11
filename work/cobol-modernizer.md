@@ -59,6 +59,7 @@ Every model call goes through one client that owns backend choice, timeout, boun
 
 - **The 3 unmatched account fields are COBOL's own defect.** The account-break post sits in an unreachable `ELSE`, so the last account is never credited. Hiding that account would have turned the comparison green by encoding the bug, so it stays visible.
 - **Both programs were measured twice:** once with scripted method bodies and once with a real `claude-opus-5` run writing them. The numbers hold for both. Both live runs compiled on the first attempt, and the repair loop never ran.
+- **Delivered end to end and merged.** A full run designed, generated and delivered `CBACT04C` as a pull request to the target repository. That branch's own CI passed 46 of 46 tests, and the change was merged.
 - **One calculation was checked against hand-derived values.** The `CBACT04C` interest `COMPUTE` passed an equivalence test 10 of 10, run by real Maven.
 - **Model routing changed on evidence.** Both Sonnet models narrated an unreachable branch in `CBACT04C` as live, so neither is eligible for `spec_extractor`, despite being about 2.5× cheaper than Opus. `spec_critic` runs on Haiku because a benchmark showed it catches planted defects as well as Opus.
 
@@ -71,8 +72,7 @@ Every model call goes through one client that owns backend choice, timeout, boun
 
 - **2 of 4 is the reachable maximum in this sense.** The other two programs only read and print. The file paths are still hand-written, because the COBOL names an environment, not a file. The claim is that *generated logic matches COBOL's own output inside wiring a human wrote*. It is not *the platform generated a working program*.
 - **Output quality is spot-measured, not continuously evaluated.** An LLM-as-judge harness exists, with a committed corpus and a rubric shown to discriminate, but `solution_architect` has never been scored because no golden unified design exists to score against.
-- **Nothing has been written to the real target repository yet.**
 
 ## Source
 
-Source available on request.
+[agentic-sdlc-cobol-modernizer on GitHub](https://github.com/jayakumar-devaraj/agentic-sdlc-cobol-modernizer), with each verification recorded in [`docs/qa/`](https://github.com/jayakumar-devaraj/agentic-sdlc-cobol-modernizer/tree/main/docs/qa).
