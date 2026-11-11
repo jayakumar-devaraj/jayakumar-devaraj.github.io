@@ -10,7 +10,7 @@ glance:
   - label: Stack
     text: Python · FastAPI · Postgres and pgvector · hybrid retrieval · LangGraph · RAGAS
   - label: Result
-    text: In a pre-registered eval on 30 synthetic questions, recall@5 was 0.90 and retrieval p95 stayed under 60 ms; the clause assistant answered or declined correctly 9 of 9 times.
+    text: In a pre-registered eval on 30 synthetic questions, recall@5 was 0.90 and retrieval p95 was 54–60 ms; the clause assistant answered or declined correctly 9 of 9 times.
 ---
 
 ## Problem and constraint
@@ -86,7 +86,7 @@ The RAGAS scores are reported but treated only as a smoke test. 9 of 21 judge ca
 ## Failures found, and what they changed
 
 - **A rate limit that forgot refused calls.** An independent audit inferred that a refused call's count rolled back with its transaction. An integration test against real Postgres reproduced it first, storing 2 calls where 5 were made, and the fix moved the refusal after the commit.
-- **A document cap that parallel uploads could pass.** With a cap of 2 and one document held, 6 parallel uploads all committed. Each tenant's uploads are now serialized, and the same test proves the cap holds.
+- **A document cap that parallel uploads could pass.** With a cap of 2 and one document held, 6 parallel uploads left the tenant holding 6 documents. Each tenant's uploads are now serialized, and the same test proves the cap holds.
 - **Retrieval misses reported, not tuned.** Two paraphrased questions missed their section entirely, and two more were found only at rank 5, which the service's default of 4 misses on the first pass. Nothing was changed in response, so the score still describes the system as it is.
 
 ## Limits

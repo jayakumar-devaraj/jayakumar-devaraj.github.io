@@ -75,7 +75,7 @@ Four repositories coupled only through Kafka topics and one contract package. No
 
 - **Serial by design.** One worker runs every slice, so a long run delays decisions for others. The next step is a measured load model with a stated decision-to-resume SLO before adding workers.
 - **No statistical evaluation of generated changes yet.** Live generation is evidenced by one run. A held-out task suite with confidence intervals is the planned next artifact.
-- **Ongoing hardening.** An independent audit in October 2026 identified gate-decision authentication and execution isolation as the next hardening priorities; that work is in progress.
+- **Ongoing hardening.** An independent audit in October 2026 identified gate-decision authentication and execution isolation as the next hardening priorities.
 
 ## Source
 
