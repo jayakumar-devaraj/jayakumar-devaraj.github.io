@@ -14,6 +14,7 @@
     - RAGAS
     - LangFuse
     - Jaeger tracing
+    - Prometheus metrics
 
 - group: Architecture and APIs
   items:

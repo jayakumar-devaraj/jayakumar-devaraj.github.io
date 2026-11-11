@@ -8,7 +8,7 @@
   url: /work/event-driven-chatbot.html
   icon: chat
   tags: Kafka · Redis Streams · Qdrant · PII scrubbing
-  summary: Async Kafka chat with PII scrubbing, human-approved refunds, and measured latency.
+  summary: Async Kafka chat with PII scrubbing, document questions answered by a RAG service, and human-approved refunds.
 
 - title: COBOL modernizer
   url: /work/cobol-modernizer.html
@@ -19,5 +19,5 @@
 - title: RAG evaluation
   url: /work/rag-evaluation.html
   icon: search
-  tags: pgvector · hybrid retrieval · citation guard · RAGAS
-  summary: Retrieval systems judged by measurement, not demos.
+  tags: multi-tenant · pgvector · hybrid retrieval · RAGAS
+  summary: A multi-tenant RAG service and a clause assistant, judged by pre-registered measurement, not demos.
