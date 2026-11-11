@@ -79,4 +79,4 @@ Four repositories coupled only through Kafka topics and one contract package. No
 
 ## Source
 
-Source available on request.
+[agentic-sdlc-control-plane on GitHub](https://github.com/jayakumar-devaraj/agentic-sdlc-control-plane), with the functional verification report in [`tests/evaluation/REPORT.md`](https://github.com/jayakumar-devaraj/agentic-sdlc-control-plane/blob/main/tests/evaluation/REPORT.md).
