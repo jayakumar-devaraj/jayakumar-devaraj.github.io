@@ -7,4 +7,4 @@ employers: [Fidelity Investments, Publicis Groupe, Nationwide, Cognizant, Wipro,
 clients: [Fidelity, Nationwide, UTC, Citibank, State Street, Asurion, TVS, Chola]
 ---
 
-I design and build agentic AI systems: event-driven orchestration, evaluation, and the operational plumbing that keeps them honest. Every case study below states its constraints, the alternatives I rejected, and results from real runs. Source is available on request.
+I design and build agentic AI systems: event-driven orchestration, evaluation, and the operational plumbing that keeps them honest. Every case study below states its constraints, the alternatives I rejected, and results from real runs, and links to the source on GitHub.
